@@ -81,8 +81,6 @@ export default {
         imageContext.keys().forEach((key) => {
             this.images.push(imageContext(key));
         });
-
-        console.log(this.images)
     }
 }
 </script>

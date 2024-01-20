@@ -18,6 +18,5 @@ function scrollToTop() {
 }
 
 $("a.scroll-top").on("click", () => {
-  console.log("entrou")
   scrollToTop();
 })
