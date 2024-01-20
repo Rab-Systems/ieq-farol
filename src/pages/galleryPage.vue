@@ -11,17 +11,8 @@
             <div class="gallery-container">
                 <div ref="swiper" class="swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="https://i0.wp.com/teologiabrasileira.com.br/wp-content/uploads/2018/08/o_culto_e_os_seus_princ%C3%ADpios_d_b_riker_2.jpg?fit=630%2C337&ssl=1" class="img-fluid">
-                            <p>Lorem ipsum dolor sit amet</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://1.bp.blogspot.com/-utwAvmWIKAw/WI3xUrhS69I/AAAAAAAAWNk/0cPjCILSTWESBPmVYttXlwrQtN6LPKinACLcB/s640/culto-cristao-contemporaneo.jpg" class="img-fluid">
-                            <p>Lorem ipsum dolor sit amet</p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="https://www.portaldotrono.com/wp-content/uploads/2020/03/culto.jpg" class="img-fluid">
-                            <p>Lorem ipsum dolor sit amet</p>
+                        <div class="swiper-slide" v-for="(image, index) in images" :key="index">
+                            <img :src="image" class="img-fluid">
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -49,6 +40,11 @@ import 'swiper/css/autoplay';
 
 export default {
     name: "galleryPage",
+    data() {
+        return {
+            images: []
+        }
+    },
     components: {
         headerComponent,
         optionsBackground,
@@ -78,6 +74,15 @@ export default {
                 perSlideOffset: 16
             },
         })
+
+        const imageContext = require.context('@/assets/img/galeria', false, /\.(png|jpe?g|svg)$/);
+
+        // Passe pelas chaves do contexto e adicione os caminhos das imagens ao array
+        imageContext.keys().forEach((key) => {
+            this.images.push(imageContext(key));
+        });
+
+        console.log(this.images)
     }
 }
 </script>
@@ -88,7 +93,7 @@ export default {
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
-    min-height: 50vh;
+    height: 70vh;
     width: 100%;
 }
 

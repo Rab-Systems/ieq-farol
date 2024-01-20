@@ -37,14 +37,14 @@ export default {
                     cardAlign: "left",
                     background: "https://ieq-farol-bucket.s3.sa-east-1.amazonaws.com/shows.jpeg"
                 },
-                {
+                /*{
                     id: 2,
                     title: "EVANGELISMO",
                     subtitle: "Sábado, 27/05/2023 às 15:30H",
                     subtitle2: "GMJ",
                     cardAlign: "left",
                     background: "https://ieq-farol-bucket.s3.sa-east-1.amazonaws.com/evangelismo.jpg"
-                }
+                }*/
             ]
         }
     },

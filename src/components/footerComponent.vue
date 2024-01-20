@@ -60,11 +60,11 @@
                 </a>
                 <i class="fab fa-instagram" style="display: none;"></i>
             </div>
-            <div class="signature d-flex align-items-center justify-content-center flex-column m-2">
-                <span>&copy; 2023 IEQ Farol. Todos os direitos reservados.</span>
+            <div class="signature d-flex align-items-center justify-content-center flex-column m-2" style="align-items: flex-end !important;">
+                <span>&copy; {{ year }} IEQ Farol. Todos os direitos reservados.</span>
                 <span>Por <a href="https://rabsystems.com.br" target="_blank">Rabsystems</a></span>
             </div>
-            <div class="privacy-polices m-2">
+            <div class="privacy-polices m-2" style="display: none;">
                 <span><a href="">Política de privacidade</a> | <a href="">Termos e condições</a></span>
             </div>
         </div>
@@ -75,6 +75,11 @@ import $ from 'jquery';
 
 export default {
     name: "footerComponent",
+    data() {
+        return {
+            year: null
+        }
+    },
     methods: {
         subscribeNewsletter: function () {
             let container = $(".newsletter-input");
@@ -84,6 +89,10 @@ export default {
                 container.html(content);
             }, 3000)
         }
+    },
+    mounted: function () {
+        let now = new Date();
+        this.year = now.getFullYear();
     }
 }
 </script>
